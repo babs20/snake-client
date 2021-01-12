@@ -36,6 +36,26 @@ const handleUserInput = function (key, conn) {
   if (key === 'd') {
     conn.write('Move: right');
   }
+
+  // text messages
+  switch (key) {
+    case '1':
+      conn.write('Say: Good game!');
+      break;
+    case '2':
+      conn.write('Say: What a play!');
+      break;
+    case '3':
+      conn.write('Say: $#@%!');
+      break;
+    case '4':
+      conn.write('Say: No Way!');
+      break;
+    case '5':
+      conn.write('Say: Rematch!');
+      break;
+  }
 };
+
 
 module.exports = { setupInput };
