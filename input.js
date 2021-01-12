@@ -1,3 +1,4 @@
+const { USERINPUT } = require('./constants');
 let connection;
 
 /**
@@ -22,38 +23,14 @@ const handleUserInput = function (key, conn) {
     console.log(`Thanks for playing!`);
     process.exit();
   }
+  const movementKeys = ['w', 'a', 's', 'd'];
+  const messageKeys = ['1', '2', '3', '4', '5'];
 
-  //movement
-  if (key === 'w') {
-    conn.write('Move: up');
-  }
-  if (key === 'a') {
-    conn.write('Move: left');
-  }
-  if (key === 's') {
-    conn.write('Move: down');
-  }
-  if (key === 'd') {
-    conn.write('Move: right');
-  }
-
-  // text messages
-  switch (key) {
-    case '1':
-      conn.write('Say: Good game!');
-      break;
-    case '2':
-      conn.write('Say: What a play!');
-      break;
-    case '3':
-      conn.write('Say: $#@%!');
-      break;
-    case '4':
-      conn.write('Say: No Way!');
-      break;
-    case '5':
-      conn.write('Say: Rematch!');
-      break;
+  // movement
+  if (movementKeys.includes(key)) {
+    conn.write(USERINPUT.MOVEMENT[key]);
+  } else if (messageKeys.includes(key)) { // text messages
+    conn.write(USERINPUT.MESSAGES[key]);
   }
 };
 
